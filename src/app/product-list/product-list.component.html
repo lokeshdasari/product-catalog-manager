@@ -1,0 +1,26 @@
+<div class="filters">
+    <label for="category">Category</label>
+    <select id="category" [(ngModel)]="selectedCategory" (change)="filterProducts()">
+      <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+    </select>
+  
+    <label for="sortBy">Sort By</label>
+    <select id="sortBy" [(ngModel)]="sortBy" (change)="sortProducts()">
+      <option value="price">Price</option>
+      <option value="rating">Rating</option>
+    </select>
+  </div>
+
+  <div class="add-product-button">
+    <button (click)="onAddProductClick()" routerLinkActive="active">Add New Product</button>
+  </div>
+  
+  <div class="product-grid">
+    <div *ngFor="let product of filteredProducts" class="product-card">
+      <h3>{{ product.name }}</h3>
+      <p>Price: ${{ product.price }}</p>
+      <p>Rating: {{ product.rating }}</p>
+      <p>Category: {{ product.category }}</p>
+    </div>
+  </div>
+  
